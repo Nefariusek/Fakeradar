@@ -9,6 +9,8 @@ import {
   PATH_TO_REPORTPAGE,
   PATH_TO_SPONSORPAGE,
 } from './constants/paths';
+
+import Sponsorspage from './views/Sponsorspage';
 import FormPage from './views/FormPage';
 import HomePage from './views/HomePage';
 
