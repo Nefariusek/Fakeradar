@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import { useState } from 'react';
+import { useState, FormEvent } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -26,15 +26,16 @@ const paths = [
 ];
 
 function App(): ReactElement {
-  const [verfied, setVerifed] = useState(false);
+  const [verified, setVerified] = useState(false);
 
-  function onReCaptchaChange(value: string | null) {
-    console.log('Captcha value:', value);
-    setVerifed(true);
+  function onReCaptchaChange(recaptchaValue: string | null) {
+    console.log('OnChange - captcha value:', recaptchaValue);
+    setVerified(true);
   }
 
-  function handleFormSubmit() {
-    console.log('Submit');
+  function onFormSubmit(event: FormEvent) {
+    event.preventDefault();
+    console.log('OnSubmit - is verified?', verified);
   }
 
   return (
@@ -47,7 +48,7 @@ function App(): ReactElement {
 
       <Box
         component="form"
-        onSubmit={handleFormSubmit}
+        onSubmit={onFormSubmit}
         sx={{
           display: 'flex',
           flexDirection: 'column',
