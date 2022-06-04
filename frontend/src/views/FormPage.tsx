@@ -35,7 +35,6 @@ const smallTextFieldStyle = {
 };
 
 const FormPage: React.FunctionComponent = (): ReactElement => {
-  const isCaptchaOk = true;
   const [source, setSource] = useState(sources[0].value);
   const [message, setMessage] = useState('');
   const [details, setDetails] = useState('');
@@ -43,31 +42,64 @@ const FormPage: React.FunctionComponent = (): ReactElement => {
   const [name, setName] = useState('');
   const [contact, setContact] = useState('');
   const [isChecked, setIsChecked] = useState(false);
+
   const [verified, setVerified] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
 
-  const handleChange = (event: any) => {
+  const handleSourceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
     setSource(event.target.value);
   };
 
-  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleMessageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    setMessage(event.target.value);
+  };
+
+  const handleDetailsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    console.log(event.target.value);
+    setDetails(event.target.value);
+  };
+
+  const handleDescriptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    setDescription(event.target.value);
+  };
+
+  const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
 
+  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    setName(event.target.value);
+  };
+
+  const handleContactChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    setContact(event.target.value);
+  };
+
   const validateForm = (): boolean => {
-    if (details) {
-      return true;
-    } else {
+    if (!details || !message) {
       return false;
     }
+    if (isChecked) {
+      if (!name || !contact) {
+        return false;
+      }
+    }
+    return true;
   };
 
   const handleValidation = () => {
-    // if (validateForm()) {
-    //   console.log('sent');
-
-    // }
-    setIsClicked(!isClicked);
+    console.log(details);
+    console.log(message);
+    if (validateForm()) {
+      console.log('sent');
+      setIsClicked(!isClicked);
+    }
   };
 
   const handleFileUploadError = (error: any) => {
@@ -106,7 +138,7 @@ const FormPage: React.FunctionComponent = (): ReactElement => {
               select
               value={source}
               label="Source of phishing:"
-              onChange={handleChange}
+              onChange={handleSourceChange}
               helperText="Please select source of phishing"
               required
               variant="filled"
@@ -124,6 +156,7 @@ const FormPage: React.FunctionComponent = (): ReactElement => {
               label="Massage:"
               variant="filled"
               style={textFieldStyle}
+              onChange={handleMessageChange}
             ></TextField>
             {source === 'sms' && (
               <TextField
@@ -132,6 +165,7 @@ const FormPage: React.FunctionComponent = (): ReactElement => {
                 label="Senders phone number:"
                 variant="filled"
                 style={textFieldStyle}
+                onChange={handleDetailsChange}
               ></TextField>
             )}
             {source === 'mail' && (
@@ -141,6 +175,7 @@ const FormPage: React.FunctionComponent = (): ReactElement => {
                 label="Senders address:"
                 variant="filled"
                 style={textFieldStyle}
+                onChange={handleDetailsChange}
               ></TextField>
             )}
             {source === 'social media' && (
@@ -150,6 +185,7 @@ const FormPage: React.FunctionComponent = (): ReactElement => {
                 label="Senders username:"
                 variant="filled"
                 style={textFieldStyle}
+                onChange={handleDetailsChange}
               ></TextField>
             )}
             <TextField
@@ -160,6 +196,7 @@ const FormPage: React.FunctionComponent = (): ReactElement => {
               multiline
               rows="8"
               style={textFieldStyle}
+              onChange={handleDescriptionChange}
             ></TextField>
             <FileUpload
               multiFile={true}
@@ -196,6 +233,7 @@ const FormPage: React.FunctionComponent = (): ReactElement => {
                   label="Name:"
                   variant="filled"
                   style={smallTextFieldStyle}
+                  onChange={handleNameChange}
                 ></TextField>
                 <TextField
                   helperText="Leave contact"
@@ -203,6 +241,7 @@ const FormPage: React.FunctionComponent = (): ReactElement => {
                   label="Contact:"
                   variant="filled"
                   style={smallTextFieldStyle}
+                  onChange={handleContactChange}
                 ></TextField>
               </Grid>
             )}

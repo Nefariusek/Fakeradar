@@ -15,7 +15,15 @@ const FormConfirmation: React.FunctionComponent = (): ReactElement => {
   };
 
   return (
-    <Grid container textAlign="center" direction="column" justifyContent="center" gap="20px" alignItems="center">
+    <Grid
+      container
+      textAlign="center"
+      direction="column"
+      justifyContent="center"
+      gap="20px"
+      alignItems="center"
+      height="100%"
+    >
       <Typography variant="h3" color="primary.main" style={{ marginBottom: '2%' }}>
         {CONFIRMATION_TEXT}
       </Typography>
