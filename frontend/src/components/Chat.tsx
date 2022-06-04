@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createStyles, Theme, Paper } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { TextInput } from './TextInput';
@@ -43,6 +43,7 @@ const useStyles: any = makeStyles((theme: Theme) =>
 );
 
 export default function Chat() {
+  const [sent, setSent] = useState(false);
   const classes = useStyles();
   return (
     <div className={classes.container}>
@@ -50,34 +51,36 @@ export default function Chat() {
         <Paper id="style-1" className={classes.messagesBody}>
           <MessageLeft
             message="Hi, my name is Juan"
-            timestamp="05/06 05:04"
+            timestamp="05/06 11:14"
             photoURL="https://lh3.googleusercontent.com/a-/AOh14Gi4vkKYlfrbJ0QLJTg_DLjcYyyK7fYoWRpz2r4s=s96-c"
             displayName="Juan"
             avatarDisp={false}
           />
           <MessageLeft
             message="How can I help you?"
-            timestamp="05/06 05:04"
+            timestamp="05/06 11:14"
             photoURL="https://lh3.googleusercontent.com/a-/AOh14Gi4vkKYlfrbJ0QLJTg_DLjcYyyK7fYoWRpz2r4s=s96-c"
             displayName=""
             avatarDisp={true}
           />
+          {sent && (
+            <MessageRight
+              message="witam"
+              timestamp="05/06 11:17"
+              photoURL="https://lh3.googleusercontent.com/a-/AOh14Gi4vkKYlfrbJ0QLJTg_DLjcYyyK7fYoWRpz2r4s=s96-c"
+              displayName="You"
+              avatarDisp={true}
+            />
+          )}
           {/* <MessageRight
-            message="messageRあめんぼあかいなあいうえおあめんぼあかいなあいうえおあめんぼあかいなあいうえお"
-            timestamp="MM/DD 00:00"
-            photoURL="https://lh3.googleusercontent.com/a-/AOh14Gi4vkKYlfrbJ0QLJTg_DLjcYyyK7fYoWRpz2r4s=s96-c"
-            displayName="まさりぶ"
-            avatarDisp={true}
-          />
-          <MessageRight
             message="messageRあめんぼあかいなあいうえおあめんぼあかいなあいうえお"
             timestamp="MM/DD 00:00"
             photoURL="https://lh3.googleusercontent.com/a-/AOh14Gi4vkKYlfrbJ0QLJTg_DLjcYyyK7fYoWRpz2r4s=s96-c"
             displayName="まさりぶ"
             avatarDisp={false}
-          /> */}
+          />} */}
         </Paper>
-        <TextInput />
+        <TextInput activateJuan={setSent} />
       </Paper>
     </div>
   );

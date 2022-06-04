@@ -1,6 +1,7 @@
-import { ReactElement } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import React, { ReactElement } from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import './App.css';
+import NavTabs from './components/NavTabs';
 import { divStyle } from './constants/pagesStyles';
 import {
   PATH_TO_EDUCATIONPAGE,
@@ -9,22 +10,25 @@ import {
   PATH_TO_REPORTPAGE,
   PATH_TO_SPONSORPAGE,
 } from './constants/paths';
-
-import Sponsorspage from './views/Sponsorspage';
+import EducationPage from './views/EducationPage';
 import FormPage from './views/FormPage';
 import HomePage from './views/HomePage';
+import Sponsorspage from './views/Sponsorspage';
 
 const paths = [
-  { element: <div>Sponsorpage</div>, url: PATH_TO_SPONSORPAGE },
+  { element: <Sponsorspage />, url: PATH_TO_SPONSORPAGE },
   { element: <FormPage />, url: PATH_TO_REPORTPAGE },
   { element: <div>Quizpage</div>, url: PATH_TO_QUIZPAGE },
-  { element: <div>Education</div>, url: PATH_TO_EDUCATIONPAGE },
+  { element: <EducationPage />, url: PATH_TO_EDUCATIONPAGE },
   { element: <HomePage />, url: PATH_TO_HOMEPAGE },
 ];
 
 function App(): ReactElement {
+  const { pathname } = useLocation();
+  console.log(pathname);
   return (
     <div style={divStyle}>
+      {pathname !== PATH_TO_HOMEPAGE && <NavTabs view={''} />}
       <Routes>
         {paths.map((path) => (
           <Route key={path.url} path={path.url} element={path.element} />

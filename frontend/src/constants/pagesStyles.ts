@@ -6,3 +6,10 @@ export const divStyle = {
   backgroundColor: BACKROUND_BLUE,
   minHeight: '100%',
 };
+
+export const sponsorsDivStyle = {
+  paddingTop: '30px',
+  color: FONT_BLUE,
+  backgroundColor: BACKROUND_BLUE,
+  minHeight: '100%',
+};

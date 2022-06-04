@@ -1,7 +1,7 @@
-import React from 'react';
 import { TextField, Button, createStyles, Theme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { Icon } from '@mui/material';
+import SendIcon from '@mui/icons-material/Send';
+import { Dispatch, SetStateAction } from 'react';
 
 const useStyles: any = makeStyles((theme: Theme) =>
   createStyles({
@@ -19,9 +19,16 @@ const useStyles: any = makeStyles((theme: Theme) =>
     },
   }),
 );
-
-export const TextInput = () => {
+interface Juan {
+  activateJuan: Dispatch<SetStateAction<boolean>>;
+}
+export const TextInput = (props: Juan) => {
+  const { activateJuan } = props;
   const classes = useStyles();
+
+  const handleClick = () => {
+    activateJuan(true);
+  };
   return (
     <>
       <form className={classes.wrapForm} noValidate autoComplete="off">
@@ -31,8 +38,8 @@ export const TextInput = () => {
           className={classes.wrapText}
           //margin="normal"
         />
-        <Button variant="contained" color="primary" className={classes.button}>
-          <Icon>S</Icon>
+        <Button variant="contained" color="primary" className={classes.button} onClick={handleClick}>
+          <SendIcon />
         </Button>
       </form>
     </>

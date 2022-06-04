@@ -1,6 +1,6 @@
-import { Box, Button, Checkbox, FormControlLabel, Grid, MenuItem, TextField, Typography } from '@mui/material';
+import { Button, Checkbox, FormControlLabel, Grid, MenuItem, TextField, Typography } from '@mui/material';
 import axios from 'axios';
-import React, { FormEvent, ReactElement, useEffect, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 //@ts-ignore
 import FileUpload from 'react-mui-fileuploader';
