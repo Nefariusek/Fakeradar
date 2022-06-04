@@ -94,12 +94,22 @@ const FormPage: React.FunctionComponent = (): ReactElement => {
   };
 
   const handleValidation = () => {
-    console.log(details);
-    console.log(message);
     if (validateForm()) {
       console.log('sent');
       setIsClicked(!isClicked);
     }
+  };
+
+  const resetForm = () => {
+    setSource(sources[0].value);
+    setMessage('');
+    setDetails('');
+    setDescription('');
+    setName('');
+    setContact('');
+    setIsChecked(false);
+    setVerified(false);
+    setIsClicked(false);
   };
 
   const handleFileUploadError = (error: any) => {
@@ -257,7 +267,7 @@ const FormPage: React.FunctionComponent = (): ReactElement => {
           </Grid>
         </>
       ) : (
-        <FormConfirmation />
+        <FormConfirmation resetForm={resetForm} />
       )}
     </div>
   );
