@@ -1,6 +1,5 @@
-import { ReactElement } from 'react';
+import React, { FormEvent, ReactElement, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-
 import './App.css';
 import { divStyle } from './constants/pagesStyles';
 import {
@@ -10,14 +9,13 @@ import {
   PATH_TO_REPORTPAGE,
   PATH_TO_SPONSORPAGE,
 } from './constants/paths';
-
-import Sponsorspage from './views/Sponsorspage';
 import FormPage from './views/FormPage';
 import HomePage from './views/HomePage';
 import EducationPage from './views/EducationPage';
+import Sponsorspage from './views/Sponsorspage';
 
 const paths = [
-  { element: <div>Sponsorpage</div>, url: PATH_TO_SPONSORPAGE },
+  { element: <Sponsorspage />, url: PATH_TO_SPONSORPAGE },
   { element: <FormPage />, url: PATH_TO_REPORTPAGE },
   { element: <div>Quizpage</div>, url: PATH_TO_QUIZPAGE },
   { element: <EducationPage />, url: PATH_TO_EDUCATIONPAGE },

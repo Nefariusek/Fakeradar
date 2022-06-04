@@ -19,3 +19,6 @@ const PHISHING7 =
   "7. Legit company links match legitimate URLs. Just because a link says it’s going to send you to one place, doesn’t mean it’s going to. Double check URLs. If the link in the text isn't identical to the URL displayed as the cursor hovers over the link, that's a sure sign you will be taken to a site you don’t want to visit. If a hyperlink’s URL doesn’t seem correct, or doesn’t match the context of the email, don’t trust it. Ensure additional security by hovering your mouse over embedded links (without clicking!) and ensure the link begins with https://.";
 
 export const PHISHING_ARRAY = [PHISHING1, PHISHING2, PHISHING3, PHISHING4, PHISHING5, PHISHING6, PHISHING7];
+export const CONFIRMATION_TEXT = 'Report the troll?';
+export const REPORT_TROLL = 'Kill it with fire!';
+export const LEAVE_HIM_ALONE = 'Leave him aloooone!';
