@@ -8,9 +8,10 @@ import {
   PATH_TO_REPORTPAGE,
   PATH_TO_SPONSORPAGE,
 } from './constants/paths';
+import Sponsorspage from './views/Sponsorspage';
 
 const paths = [
-  { element: <div>Sponsorpage</div>, url: PATH_TO_SPONSORPAGE },
+  { element: <Sponsorspage />, url: PATH_TO_SPONSORPAGE },
   { element: <div>Reportpage</div>, url: PATH_TO_REPORTPAGE },
   { element: <div>Quizpage</div>, url: PATH_TO_QUIZPAGE },
   { element: <div>Education</div>, url: PATH_TO_EDUCATIONPAGE },
