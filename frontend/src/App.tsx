@@ -1,5 +1,6 @@
 import { ReactElement } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import ReCAPTCHA from 'react-google-recaptcha';
 import './App.css';
 import {
   PATH_TO_EDUCATIONPAGE,
@@ -18,8 +19,13 @@ const paths = [
 ];
 
 function App(): ReactElement {
+  function onReCaptchaChange(value: string | null) {
+    console.log('Captcha value:', value);
+  }
+
   return (
     <div>
+      <ReCAPTCHA sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY} onChange={onReCaptchaChange} />
       <Routes>
         {paths.map((path) => (
           <Route key={path.url} path={path.url} element={path.element} />
