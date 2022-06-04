@@ -6,15 +6,16 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { fakeStatements } from '../data/fakeStatements';
 import { trueStatements } from '../data/trueStatements';
+import { QUIZ_TITLE, QUIZ_SUBTITLE } from '../constants/strings';
 
 const QuizPage: React.FunctionComponent = (): ReactElement => (
   <Container maxWidth="md">
     <Box textAlign="center" color="primary.main">
       <Typography variant="h1" color="info.main" fontWeight="550">
-        True or fake quiz
+        {QUIZ_TITLE}
       </Typography>
       <Typography variant="h5" marginTop="7%" color="primary.main">
-        Choose which statement is fake?
+        {QUIZ_SUBTITLE}
       </Typography>
     </Box>
 
