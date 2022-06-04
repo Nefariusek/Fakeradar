@@ -1,9 +1,7 @@
-import React from 'react';
-import HomePage from './views/HomePage';
-import { divStyle } from './constants/pagesStyles';
-import { ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import { divStyle } from './constants/pagesStyles';
 import {
   PATH_TO_EDUCATIONPAGE,
   PATH_TO_HOMEPAGE,
@@ -11,10 +9,12 @@ import {
   PATH_TO_REPORTPAGE,
   PATH_TO_SPONSORPAGE,
 } from './constants/paths';
+import FormPage from './views/FormPage';
+import HomePage from './views/HomePage';
 
 const paths = [
   { element: <div>Sponsorpage</div>, url: PATH_TO_SPONSORPAGE },
-  { element: <div>Reportpage</div>, url: PATH_TO_REPORTPAGE },
+  { element: <FormPage />, url: PATH_TO_REPORTPAGE },
   { element: <div>Quizpage</div>, url: PATH_TO_QUIZPAGE },
   { element: <div>Education</div>, url: PATH_TO_EDUCATIONPAGE },
   { element: <HomePage />, url: PATH_TO_HOMEPAGE },
