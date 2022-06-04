@@ -12,22 +12,22 @@ const NavTabs = ({ view }: NavTabsProps) => {
     <Tabs centered variant="fullWidth">
       {!(view == 'EDUCATION') && (
         <Link to={PATH_TO_EDUCATIONPAGE}>
-          <Tab id="EDUCATION" label="HOW TO AVOID" />
+          <Tab id="EDUCATION" label="HOW TO AVOID" value={0} />
         </Link>
       )}
       {!(view == 'REPORT') && (
         <Link to={PATH_TO_REPORTPAGE}>
-          <Tab id="REPORT" label="REPORT SCAM" />
+          <Tab id="REPORT" label="REPORT SCAM" value={1} />
         </Link>
       )}
       {!(view == 'TEST') && (
         <Link to={PATH_TO_QUIZPAGE}>
-          <Tab id="TEST" label="TEST YOUR SKILL" />
+          <Tab id="TEST" label="TEST YOUR SKILL" value={2} />
         </Link>
       )}
 
       <Link to={PATH_TO_HOMEPAGE}>
-        <Tab label="HOME" id="HOME" />
+        <Tab label="HOME" id="HOME" value={3} />
       </Link>
     </Tabs>
   );
