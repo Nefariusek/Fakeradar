@@ -85,7 +85,7 @@ export default function SponsorButtons() {
       {images.map((image) => (
         <ImageButton
           focusRipple
-          href={linkToLiveChat}
+          // href={linkToLiveChat}
           key={image.title}
           style={{
             width: image.width,

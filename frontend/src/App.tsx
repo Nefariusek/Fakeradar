@@ -1,13 +1,5 @@
-import React, { ReactElement } from 'react';
+import React, { FormEvent, ReactElement, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-
-import { useState, FormEvent } from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
-import TextField from '@mui/material/TextField';
-
 import './App.css';
 import { divStyle } from './constants/pagesStyles';
 import {
@@ -17,13 +9,12 @@ import {
   PATH_TO_REPORTPAGE,
   PATH_TO_SPONSORPAGE,
 } from './constants/paths';
-
-import Sponsorspage from './views/Sponsorspage';
 import FormPage from './views/FormPage';
 import HomePage from './views/HomePage';
+import Sponsorspage from './views/Sponsorspage';
 
 const paths = [
-  { element: <div>Sponsorpage</div>, url: PATH_TO_SPONSORPAGE },
+  { element: <Sponsorspage />, url: PATH_TO_SPONSORPAGE },
   { element: <FormPage />, url: PATH_TO_REPORTPAGE },
   { element: <div>Quizpage</div>, url: PATH_TO_QUIZPAGE },
   { element: <div>Education</div>, url: PATH_TO_EDUCATIONPAGE },
@@ -51,7 +42,7 @@ function App(): ReactElement {
         ))}
       </Routes>
 
-      <Box
+      {/* <Box
         component="form"
         onSubmit={onFormSubmit}
         sx={{
@@ -85,7 +76,7 @@ function App(): ReactElement {
             Submit
           </Button>
         </Grid>
-      </Box>
+      </Box> */}
     </div>
   );
 }
