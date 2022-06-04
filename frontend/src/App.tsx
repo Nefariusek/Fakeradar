@@ -1,5 +1,5 @@
-import React from 'react';
 import HomePage from './views/HomePage';
+import QuizPage from './views/QuizPage';
 import { divStyle } from './constants/pagesStyles';
 import { ReactElement } from 'react';
 import { Route, Routes } from 'react-router-dom';
@@ -23,7 +23,7 @@ import {
 const paths = [
   { element: <div>Sponsorpage</div>, url: PATH_TO_SPONSORPAGE },
   { element: <div>Reportpage</div>, url: PATH_TO_REPORTPAGE },
-  { element: <div>Quizpage</div>, url: PATH_TO_QUIZPAGE },
+  { element: <QuizPage />, url: PATH_TO_QUIZPAGE },
   { element: <div>Education</div>, url: PATH_TO_EDUCATIONPAGE },
   { element: <HomePage />, url: PATH_TO_HOMEPAGE },
 ];
