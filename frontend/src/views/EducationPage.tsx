@@ -31,7 +31,7 @@ const EductionPage: React.FunctionComponent = (): ReactElement => {
       >
         {phishingExamples.map((phishingExample) => (
           <Grid style={{ minWidth: '100%' }} item xs={1}>
-            <Card style={{ minWidth: '100%', padding: 20, whitespace: 'pre-wrap' }}>
+            <Card style={{ minWidth: '100%', padding: 20 }}>
               <CardContent>
                 <Typography sx={{ fontSize: 24 }} color="main.primary">
                   {phishingExample}
