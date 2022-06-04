@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
@@ -33,6 +34,11 @@ const QuizPage: React.FunctionComponent = (): ReactElement => (
           eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
           mollit anim id est laborum.
         </Typography>
+      </Grid>
+      <Grid item container justifyContent="center" xs={12} m={2}>
+        <Button variant="contained" color="primary">
+          Play again
+        </Button>
       </Grid>
     </Grid>
   </Container>
