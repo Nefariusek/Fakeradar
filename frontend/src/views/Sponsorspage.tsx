@@ -6,8 +6,11 @@ import { sponsorsDivStyle } from '../constants/pagesStyles';
 import { PATH_TO_HOMEPAGE } from '../constants/paths';
 import { CODERSCAMP_URL, LIVECHAT_URL } from '../constants/sponsorsUrls';
 import { SPONSORSPAGE_TITLE } from '../constants/strings';
+import NavTabs from '../components/NavTabs';
 
 const Sponsorspage: React.FunctionComponent = (): ReactElement => (
+  <>
+  <NavTabs />
   <div style={sponsorsDivStyle}>
     <Button
       component={Link}
@@ -42,6 +45,8 @@ const Sponsorspage: React.FunctionComponent = (): ReactElement => (
       </a>
     </Grid>
   </div>
+  </>
+  
 );
 
 export default Sponsorspage;
