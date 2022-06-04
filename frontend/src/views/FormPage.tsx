@@ -2,6 +2,7 @@ import { Button, Checkbox, FormControlLabel, Grid, MenuItem, TextField, Typograp
 import React, { ReactElement, useState } from 'react';
 //@ts-ignore
 import FileUpload from 'react-mui-fileuploader';
+import NavTabs from '../components/NavTabs';
 import { divStyle } from '../constants/pagesStyles';
 import { TITLE } from '../constants/strings';
 
@@ -73,124 +74,127 @@ const FormPage: React.FunctionComponent = (): ReactElement => {
   };
 
   return (
-    <div className="FormPage" style={divStyle}>
-      <Grid container textAlign="center" direction="row" justifyContent="center" gap="50px" alignItems="center">
-        <img width="150px" height="150px" src="./radar_logo.svg" alt="logo"></img>
-        <Typography variant="h1" color="info.main" fontWeight="550">
-          {TITLE}
-        </Typography>
-      </Grid>
-      <Grid container alignItems="center" justifyContent="space-around" direction="column" gap="2px" marginTop="40px">
-        <TextField
-          id="standard-select-currency"
-          select
-          value={source}
-          label="Source of phishing:"
-          onChange={handleChange}
-          helperText="Please select source of phishing"
-          required
-          variant="filled"
-          style={textFieldStyle}
-        >
-          {sources.map((src) => (
-            <MenuItem key={src.value} value={src.value}>
-              {src.label}
-            </MenuItem>
-          ))}
-        </TextField>
-        <TextField
-          helperText="Paste the link from a message"
-          required
-          label="Massage:"
-          variant="filled"
-          style={textFieldStyle}
-        ></TextField>
-        {source === 'sms' && (
+    <>
+      <NavTabs view="REPORT" />
+      <div className="FormPage" style={divStyle}>
+        <Grid container textAlign="center" direction="row" justifyContent="center" gap="50px" alignItems="center">
+          <img width="150px" height="150px" src="./radar_logo.svg" alt="logo"></img>
+          <Typography variant="h1" color="info.main" fontWeight="550">
+            {TITLE}
+          </Typography>
+        </Grid>
+        <Grid container alignItems="center" justifyContent="space-around" direction="column" gap="2px" marginTop="40px">
           <TextField
-            helperText="Enter senders phone number"
+            id="standard-select-currency"
+            select
+            value={source}
+            label="Source of phishing:"
+            onChange={handleChange}
+            helperText="Please select source of phishing"
             required
-            label="Senders phone number:"
+            variant="filled"
+            style={textFieldStyle}
+          >
+            {sources.map((src) => (
+              <MenuItem key={src.value} value={src.value}>
+                {src.label}
+              </MenuItem>
+            ))}
+          </TextField>
+          <TextField
+            helperText="Paste the link from a message"
+            required
+            label="Massage:"
             variant="filled"
             style={textFieldStyle}
           ></TextField>
-        )}
-        {source === 'mail' && (
-          <TextField
-            helperText="Enter senders address"
-            required
-            label="Senders address:"
-            variant="filled"
-            style={textFieldStyle}
-          ></TextField>
-        )}
-        {source === 'social media' && (
-          <TextField
-            helperText="Enter senders username"
-            required
-            label="Senders username:"
-            variant="filled"
-            style={textFieldStyle}
-          ></TextField>
-        )}
-        <TextField
-          id="outlined-multiline-static"
-          variant="outlined"
-          label="Your problem:"
-          helperText="Describe Your problem"
-          multiline
-          rows="8"
-          style={textFieldStyle}
-        ></TextField>
-        <FileUpload
-          multiFile={true}
-          disabled={false}
-          title="Please upload a screenshot of the message"
-          header="Drag and drop file"
-          leftLabel="or"
-          rightLabel="to select files"
-          buttonLabel="click here"
-          buttonRemoveLabel="Remove all"
-          maxFileSize={10}
-          maxUploadFiles={3}
-          maxFilesContainerHeight={357}
-          maxFilesContainerWidth={700}
-          minFilesContainerWidth={700}
-          errorSizeMessage={'An error occured'}
-          allowedExtensions={['jpg', 'jpeg', 'png']}
-          onFilesChange={handleFilesChange}
-          onError={handleFileUploadError}
-          bannerProps={{ elevation: 0, variant: 'outlined' }}
-          containerProps={{ elevation: 0, variant: 'outlined' }}
-        />
-        <FormControlLabel
-          value="clicked"
-          control={<Checkbox onChange={handleCheckboxChange} />}
-          label="Did You click the link?"
-          labelPlacement="end"
-        />
-        {isChecked && (
-          <Grid container alignItems="center" justifyContent="center" direction="row" gap="60px">
+          {source === 'sms' && (
             <TextField
-              helperText="Please enter Your name"
+              helperText="Enter senders phone number"
               required
-              label="Name:"
+              label="Senders phone number:"
               variant="filled"
-              style={smallTextFieldStyle}
+              style={textFieldStyle}
             ></TextField>
+          )}
+          {source === 'mail' && (
             <TextField
-              helperText="Leave contact"
+              helperText="Enter senders address"
               required
-              label="Contact:"
+              label="Senders address:"
               variant="filled"
-              style={smallTextFieldStyle}
+              style={textFieldStyle}
             ></TextField>
-          </Grid>
-        )}
-        <Button variant="contained" onClick={handleFormSubmission}>
-          Submit
-        </Button>
-      </Grid>
-    </div>
+          )}
+          {source === 'social media' && (
+            <TextField
+              helperText="Enter senders username"
+              required
+              label="Senders username:"
+              variant="filled"
+              style={textFieldStyle}
+            ></TextField>
+          )}
+          <TextField
+            id="outlined-multiline-static"
+            variant="outlined"
+            label="Your problem:"
+            helperText="Describe Your problem"
+            multiline
+            rows="8"
+            style={textFieldStyle}
+          ></TextField>
+          <FileUpload
+            multiFile={true}
+            disabled={false}
+            title="Please upload a screenshot of the message"
+            header="Drag and drop file"
+            leftLabel="or"
+            rightLabel="to select files"
+            buttonLabel="click here"
+            buttonRemoveLabel="Remove all"
+            maxFileSize={10}
+            maxUploadFiles={3}
+            maxFilesContainerHeight={357}
+            maxFilesContainerWidth={700}
+            minFilesContainerWidth={700}
+            errorSizeMessage={'An error occured'}
+            allowedExtensions={['jpg', 'jpeg', 'png']}
+            onFilesChange={handleFilesChange}
+            onError={handleFileUploadError}
+            bannerProps={{ elevation: 0, variant: 'outlined' }}
+            containerProps={{ elevation: 0, variant: 'outlined' }}
+          />
+          <FormControlLabel
+            value="clicked"
+            control={<Checkbox onChange={handleCheckboxChange} />}
+            label="Did You click the link?"
+            labelPlacement="end"
+          />
+          {isChecked && (
+            <Grid container alignItems="center" justifyContent="center" direction="row" gap="60px">
+              <TextField
+                helperText="Please enter Your name"
+                required
+                label="Name:"
+                variant="filled"
+                style={smallTextFieldStyle}
+              ></TextField>
+              <TextField
+                helperText="Leave contact"
+                required
+                label="Contact:"
+                variant="filled"
+                style={smallTextFieldStyle}
+              ></TextField>
+            </Grid>
+          )}
+          <Button variant="contained" onClick={handleFormSubmission}>
+            Submit
+          </Button>
+        </Grid>
+      </div>
+    </>
   );
 };
 export default FormPage;

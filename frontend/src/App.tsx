@@ -23,7 +23,7 @@ import FormPage from './views/FormPage';
 import HomePage from './views/HomePage';
 
 const paths = [
-  { element: <div>Sponsorpage</div>, url: PATH_TO_SPONSORPAGE },
+  { element: <Sponsorspage />, url: PATH_TO_SPONSORPAGE },
   { element: <FormPage />, url: PATH_TO_REPORTPAGE },
   { element: <div>Quizpage</div>, url: PATH_TO_QUIZPAGE },
   { element: <div>Education</div>, url: PATH_TO_EDUCATIONPAGE },
@@ -51,7 +51,7 @@ function App(): ReactElement {
         ))}
       </Routes>
 
-      <Box
+      {/* <Box
         component="form"
         onSubmit={onFormSubmit}
         sx={{
@@ -85,7 +85,7 @@ function App(): ReactElement {
             Submit
           </Button>
         </Grid>
-      </Box>
+      </Box> */}
     </div>
   );
 }
