@@ -1,5 +1,6 @@
 import { Button, Checkbox, FormControlLabel, Grid, MenuItem, TextField, Typography } from '@mui/material';
 import React, { ReactElement, useState } from 'react';
+//@ts-ignore
 import FileUpload from 'react-mui-fileuploader';
 import { divStyle } from '../constants/pagesStyles';
 import { TITLE } from '../constants/strings';
