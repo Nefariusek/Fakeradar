@@ -30,12 +30,14 @@ const QuizPage: React.FunctionComponent = (): ReactElement => {
     firstStatementAsTrue = !!randomIntFromInterval(0, 1);
 
     console.log('firstStatementAsTrue: ', firstStatementAsTrue);
+    console.log('fakeStatementNumber: ', fakeStatementNumber);
+    console.log('trueStatementNumber: ', trueStatementNumber);
 
     setFakeStatement(fakeStatements[fakeStatementNumber - 1]);
     setTrueStatement(trueStatements[trueStatementNumber - 1]);
   }, []);
 
-  const validateStatement = (choosedFirstStatement: boolean, target): void => {
+  const validateStatement = (choosedFirstStatement: boolean): void => {
     if ((firstStatementAsTrue && choosedFirstStatement) || (!firstStatementAsTrue && !choosedFirstStatement)) {
       setIsGoodAnswer(true);
     } else {
@@ -56,16 +58,16 @@ const QuizPage: React.FunctionComponent = (): ReactElement => {
       </Box>
 
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 4 }} m={4}>
-        <Grid item xs={6} onClick={(e) => validateStatement(true, e.target)}>
-          <Typography variant="h5" marginTop="7%" color="primary.main" mb={1}>
+        <Grid item xs={6} onClick={(e) => validateStatement(true)}>
+          <Typography variant="h5" color="primary.main" m={2}>
             {firstStatementAsTrue ? trueStatement?.title : fakeStatement?.title}
           </Typography>
           <Typography component="p" align="center">
             {firstStatementAsTrue ? trueStatement?.text : fakeStatement?.text}
           </Typography>
         </Grid>
-        <Grid item xs={6} onClick={(e) => validateStatement(false, e.target)}>
-          <Typography variant="h5" marginTop="7%" color="primary.main" mb={1}>
+        <Grid item xs={6} onClick={(e) => validateStatement(false)}>
+          <Typography variant="h5" color="primary.main" m={2}>
             {firstStatementAsTrue ? fakeStatement?.title : trueStatement?.title}
           </Typography>
           <Typography component="p" align="center">
@@ -75,8 +77,12 @@ const QuizPage: React.FunctionComponent = (): ReactElement => {
         <Grid item container direction="column" justifyContent="center" xs={12} m={2} gap={2}>
           {showAnswer ? (
             <>
-              <Typography component="p" align="center">
-                Your answer is: {isGoodAnswer ? 'good' : 'false'}.
+              <Typography
+                component="p"
+                align="center"
+                sx={{ fontWeight: 600, color: isGoodAnswer ? 'lightseagreen' : 'red' }}
+              >
+                Your answer is: {isGoodAnswer ? 'good' : 'false'}
               </Typography>
               <Button variant="contained" color="primary">
                 Play again
