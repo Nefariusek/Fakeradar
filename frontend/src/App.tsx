@@ -1,4 +1,3 @@
-
 import React, { FormEvent, ReactElement, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
@@ -12,13 +11,14 @@ import {
 } from './constants/paths';
 import FormPage from './views/FormPage';
 import HomePage from './views/HomePage';
+import EducationPage from './views/EducationPage';
 import Sponsorspage from './views/Sponsorspage';
 
 const paths = [
   { element: <Sponsorspage />, url: PATH_TO_SPONSORPAGE },
   { element: <FormPage />, url: PATH_TO_REPORTPAGE },
   { element: <div>Quizpage</div>, url: PATH_TO_QUIZPAGE },
-  { element: <div>Education</div>, url: PATH_TO_EDUCATIONPAGE },
+  { element: <EducationPage />, url: PATH_TO_EDUCATIONPAGE },
   { element: <HomePage />, url: PATH_TO_HOMEPAGE },
 ];
 
