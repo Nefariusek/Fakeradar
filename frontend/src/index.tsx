@@ -6,12 +6,15 @@ import ReactDOM from 'react-dom';
 import App from './App';
 
 import reportWebVitals from './reportWebVitals';
+import { HashRouter } from 'react-router-dom';
 
 const AppWrapper: React.FC = (): React.ReactElement => <App />;
 
 ReactDOM.render(
   <React.StrictMode>
-    <AppWrapper />
+    <HashRouter>
+      <AppWrapper />
+    </HashRouter>
   </React.StrictMode>,
   document.getElementById('root'),
 );
