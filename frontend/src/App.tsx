@@ -1,11 +1,11 @@
 import React from 'react';
 import HomePage from './views/HomePage';
+import { divStyle } from './constants/pagesStyles';
 import './App.css';
 
 function App() {
   return (
-    <div>
-      test
+    <div style={divStyle}>
       <HomePage />
     </div>
   );
