@@ -1,6 +1,5 @@
 import { Box, Button, Container, Grid, Typography } from '@mui/material';
 import React, { ReactElement } from 'react';
-import SponsorButtons from './SposorButtons';
 import { SPONSORSPAGE_TITLE } from '../constants/strings';
 import { divStyle } from '../constants/pagesStyles';
 import { PATH_TO_HOMEPAGE } from '../constants/paths';
@@ -27,7 +26,6 @@ const Sponsorspage: React.FunctionComponent = (): ReactElement => (
           {SPONSORSPAGE_TITLE}
         </Typography>
       </Box>
-      <SponsorButtons />
     </Grid>
   </div>
 );
