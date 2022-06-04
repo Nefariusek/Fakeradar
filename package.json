@@ -1,5 +1,27 @@
 {
-  "dependencies": {
-    "react-router-dom": "^6.3.0"
+  "name": "Fakeradar",
+  "version": "1.0.0",
+  "description": "Hackaton project",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "husky install",
+    "pre-commit": "lint-staged",
+    "test": "cd frontend && npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nefariusek/Fakeradar.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.7",
+    "prettier": "^2.6.1"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write"
+    ]
   }
 }
