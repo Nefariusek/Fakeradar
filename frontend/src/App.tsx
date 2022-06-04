@@ -1,3 +1,6 @@
+import React from 'react';
+import HomePage from './views/HomePage';
+import { divStyle } from './constants/pagesStyles';
 import { ReactElement } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
@@ -15,12 +18,12 @@ const paths = [
   { element: <div>Reportpage</div>, url: PATH_TO_REPORTPAGE },
   { element: <div>Quizpage</div>, url: PATH_TO_QUIZPAGE },
   { element: <div>Education</div>, url: PATH_TO_EDUCATIONPAGE },
-  { element: <div>Homepage</div>, url: PATH_TO_HOMEPAGE },
+  { element: <HomePage />, url: PATH_TO_HOMEPAGE },
 ];
 
 function App(): ReactElement {
   return (
-    <div>
+    <div style={divStyle}>
       <Routes>
         {paths.map((path) => (
           <Route key={path.url} path={path.url} element={path.element} />
