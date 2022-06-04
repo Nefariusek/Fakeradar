@@ -9,17 +9,40 @@ import { trueStatements } from '../data/trueStatements';
 import { QUIZ_TITLE, QUIZ_SUBTITLE } from '../constants/strings';
 import randomIntFromInterval from '../services/randomIntFromInterval';
 
+interface Statement {
+  title: string;
+  text: string;
+  subject: string;
+  date: string;
+}
+
 const QuizPage: React.FunctionComponent = (): ReactElement => {
-  const [fakeStatement, setFakeStatement] = useState('');
-  const [trueStatement, setTrueStatement] = useState('');
+  const [fakeStatement, setFakeStatement] = useState<Statement>();
+  const [trueStatement, setTrueStatement] = useState<Statement>();
+  const [showAnswer, setShowAnswer] = useState<Boolean>(false);
+  const [isGoodAnswer, setIsGoodAnswer] = useState<Boolean>(false);
+  const [playAgain, setPlayAgain] = useState(false);
+  let firstStatementAsTrue: boolean = false;
 
   useEffect(() => {
     const fakeStatementNumber = randomIntFromInterval(1, fakeStatements.length);
     const trueStatementNumber = randomIntFromInterval(1, trueStatements.length);
+    firstStatementAsTrue = !!randomIntFromInterval(0, 1);
 
-    setFakeStatement(fakeStatements[fakeStatementNumber - 1].text);
-    setTrueStatement(trueStatements[trueStatementNumber - 1].text);
+    console.log('firstStatementAsTrue: ', firstStatementAsTrue);
+
+    setFakeStatement(fakeStatements[fakeStatementNumber - 1]);
+    setTrueStatement(trueStatements[trueStatementNumber - 1]);
   }, []);
+
+  const validateStatement = (choosedFirstStatement: boolean, target): void => {
+    if ((firstStatementAsTrue && choosedFirstStatement) || (!firstStatementAsTrue && !choosedFirstStatement)) {
+      setIsGoodAnswer(true);
+    } else {
+      setIsGoodAnswer(false);
+    }
+    setShowAnswer(true);
+  };
 
   return (
     <Container maxWidth="md">
@@ -27,26 +50,39 @@ const QuizPage: React.FunctionComponent = (): ReactElement => {
         <Typography variant="h1" color="info.main" fontWeight="550">
           {QUIZ_TITLE}
         </Typography>
-        <Typography variant="h5" marginTop="7%" color="primary.main">
+        <Typography variant="h3" marginTop="7%" color="primary.main">
           {QUIZ_SUBTITLE}
         </Typography>
       </Box>
 
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 4 }} m={4}>
-        <Grid item xs={6}>
+        <Grid item xs={6} onClick={(e) => validateStatement(true, e.target)}>
+          <Typography variant="h5" marginTop="7%" color="primary.main" mb={1}>
+            {firstStatementAsTrue ? trueStatement?.title : fakeStatement?.title}
+          </Typography>
           <Typography component="p" align="center">
-            {fakeStatement}
+            {firstStatementAsTrue ? trueStatement?.text : fakeStatement?.text}
           </Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={6} onClick={(e) => validateStatement(false, e.target)}>
+          <Typography variant="h5" marginTop="7%" color="primary.main" mb={1}>
+            {firstStatementAsTrue ? fakeStatement?.title : trueStatement?.title}
+          </Typography>
           <Typography component="p" align="center">
-            {trueStatement}
+            {firstStatementAsTrue ? fakeStatement?.text : trueStatement?.text}
           </Typography>
         </Grid>
-        <Grid item container justifyContent="center" xs={12} m={2}>
-          <Button variant="contained" color="primary">
-            Play again
-          </Button>
+        <Grid item container direction="column" justifyContent="center" xs={12} m={2} gap={2}>
+          {showAnswer ? (
+            <>
+              <Typography component="p" align="center">
+                Your answer is: {isGoodAnswer ? 'good' : 'false'}.
+              </Typography>
+              <Button variant="contained" color="primary">
+                Play again
+              </Button>
+            </>
+          ) : null}
         </Grid>
       </Grid>
     </Container>
