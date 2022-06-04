@@ -19,22 +19,16 @@ interface Statement {
 const QuizPage: React.FunctionComponent = (): ReactElement => {
   const [fakeStatement, setFakeStatement] = useState<Statement>();
   const [trueStatement, setTrueStatement] = useState<Statement>();
-  const [showAnswer, setShowAnswer] = useState<Boolean>(false);
+  const [firstStatementAsTrue, setfirstStatementAsTrue] = useState(false);
   const [isGoodAnswer, setIsGoodAnswer] = useState<Boolean>(false);
-  const [playAgain, setPlayAgain] = useState(false);
-  let firstStatementAsTrue: boolean = false;
+  const [showAnswer, setShowAnswer] = useState<Boolean>(false);
 
   useEffect(() => {
     const fakeStatementNumber = randomIntFromInterval(1, fakeStatements.length);
     const trueStatementNumber = randomIntFromInterval(1, trueStatements.length);
-    firstStatementAsTrue = !!randomIntFromInterval(0, 1);
-
-    console.log('firstStatementAsTrue: ', firstStatementAsTrue);
-    console.log('fakeStatementNumber: ', fakeStatementNumber);
-    console.log('trueStatementNumber: ', trueStatementNumber);
-
     setFakeStatement(fakeStatements[fakeStatementNumber - 1]);
     setTrueStatement(trueStatements[trueStatementNumber - 1]);
+    setfirstStatementAsTrue(!!randomIntFromInterval(0, 1));
   }, []);
 
   const validateStatement = (choosedFirstStatement: boolean): void => {
@@ -45,6 +39,18 @@ const QuizPage: React.FunctionComponent = (): ReactElement => {
     }
     setShowAnswer(true);
   };
+
+  const onClick = () => {
+    const fakeStatementNumber = randomIntFromInterval(1, fakeStatements.length);
+    const trueStatementNumber = randomIntFromInterval(1, trueStatements.length);
+    setFakeStatement(fakeStatements[fakeStatementNumber - 1]);
+    setTrueStatement(trueStatements[trueStatementNumber - 1]);
+    setfirstStatementAsTrue(!!randomIntFromInterval(0, 1));
+    setIsGoodAnswer(false);
+    setShowAnswer(false);
+  };
+
+  console.log('firstStatementAsTrue: ', firstStatementAsTrue);
 
   return (
     <Container maxWidth="md">
@@ -84,7 +90,7 @@ const QuizPage: React.FunctionComponent = (): ReactElement => {
               >
                 Your answer is: {isGoodAnswer ? 'good' : 'false'}
               </Typography>
-              <Button variant="contained" color="primary">
+              <Button variant="contained" color="primary" onClick={onClick}>
                 Play again
               </Button>
             </>
