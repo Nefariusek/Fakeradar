@@ -1,6 +1,7 @@
-import React, { FormEvent, ReactElement, useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import React, { ReactElement } from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import './App.css';
+import NavTabs from './components/NavTabs';
 import { divStyle } from './constants/pagesStyles';
 import {
   PATH_TO_EDUCATIONPAGE,
@@ -9,9 +10,9 @@ import {
   PATH_TO_REPORTPAGE,
   PATH_TO_SPONSORPAGE,
 } from './constants/paths';
+import EducationPage from './views/EducationPage';
 import FormPage from './views/FormPage';
 import HomePage from './views/HomePage';
-import EducationPage from './views/EducationPage';
 import Sponsorspage from './views/Sponsorspage';
 
 const paths = [
@@ -23,8 +24,11 @@ const paths = [
 ];
 
 function App(): ReactElement {
+  const { pathname } = useLocation();
+  console.log(pathname);
   return (
     <div style={divStyle}>
+      {pathname !== PATH_TO_HOMEPAGE && <NavTabs view={''} />}
       <Routes>
         {paths.map((path) => (
           <Route key={path.url} path={path.url} element={path.element} />

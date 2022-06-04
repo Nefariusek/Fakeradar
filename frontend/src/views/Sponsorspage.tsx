@@ -1,7 +1,6 @@
 import { Box, Button, Grid, Typography } from '@mui/material';
 import React, { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
-import NavTabs from '../components/NavTabs';
 import { CODERSCAMP_LOGO, LIVECHAT_LOGO } from '../constants/logosUrls';
 import { sponsorsDivStyle } from '../constants/pagesStyles';
 import { PATH_TO_HOMEPAGE } from '../constants/paths';
@@ -10,7 +9,6 @@ import { SPONSORSPAGE_TITLE } from '../constants/strings';
 
 const Sponsorspage: React.FunctionComponent = (): ReactElement => (
   <>
-    <NavTabs view="" />
     <div style={sponsorsDivStyle}>
       <Button
         component={Link}

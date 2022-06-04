@@ -29,8 +29,8 @@ const EductionPage: React.FunctionComponent = (): ReactElement => {
         spacing={3}
         alignItems="start"
       >
-        {phishingExamples.map((phishingExample) => (
-          <Grid style={{ minWidth: '100%' }} item xs={1}>
+        {phishingExamples.map((phishingExample, index) => (
+          <Grid style={{ minWidth: '100%' }} item xs={1} key={index}>
             <Card style={{ minWidth: '100%', padding: 20 }}>
               <CardContent>
                 <Typography sx={{ fontSize: 24 }} color="main.primary">
