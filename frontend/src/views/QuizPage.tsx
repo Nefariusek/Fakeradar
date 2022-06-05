@@ -77,6 +77,7 @@ const QuizPage: React.FunctionComponent = (): ReactElement => {
       <Grid container justifyContent="center" rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 4 }} m={4} gap={2}>
         <Grid
           item
+          xs={12}
           md={5}
           onClick={(e) => validateStatement(true)}
           sx={{
@@ -95,7 +96,8 @@ const QuizPage: React.FunctionComponent = (): ReactElement => {
         </Grid>
         <Grid
           item
-          xs={5}
+          xs={12}
+          md={5}
           onClick={(e) => validateStatement(false)}
           sx={{
             borderRadius: '2%',
