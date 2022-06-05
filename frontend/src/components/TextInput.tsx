@@ -32,12 +32,7 @@ export const TextInput = (props: Juan) => {
   return (
     <>
       <form className={classes.wrapForm} noValidate autoComplete="off">
-        <TextField
-          id="standard-text"
-          label="Your message"
-          className={classes.wrapText}
-          //margin="normal"
-        />
+        <TextField id="standard-text" label="Your message" className={classes.wrapText} />
         <Button variant="contained" color="primary" className={classes.button} onClick={handleClick}>
           <SendIcon />
         </Button>

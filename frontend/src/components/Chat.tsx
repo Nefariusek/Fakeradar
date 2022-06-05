@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createStyles, Theme, Paper } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { TextInput } from './TextInput';
@@ -44,7 +44,15 @@ const useStyles: any = makeStyles((theme: Theme) =>
 
 export default function Chat() {
   const [sent, setSent] = useState(false);
+  const [juanResponds, releaseJuan] = useState(false);
   const classes = useStyles();
+
+  useEffect(() => {
+    setTimeout(() => {
+      releaseJuan(true);
+    }, 10000);
+  }, [sent]);
+
   return (
     <div className={classes.container}>
       <Paper className={classes.paper}>
@@ -72,13 +80,15 @@ export default function Chat() {
               avatarDisp={true}
             />
           )}
-          {/* <MessageRight
-            message="messageRあめんぼあかいなあいうえおあめんぼあかいなあいうえお"
-            timestamp="MM/DD 00:00"
-            photoURL="https://lh3.googleusercontent.com/a-/AOh14Gi4vkKYlfrbJ0QLJTg_DLjcYyyK7fYoWRpz2r4s=s96-c"
-            displayName="まさりぶ"
-            avatarDisp={false}
-          />} */}
+          {juanResponds && (
+            <MessageLeft
+              message="Your request is beeing processed. Please wait"
+              timestamp="05/06 11:18"
+              photoURL="https://lh3.googleusercontent.com/a-/AOh14Gi4vkKYlfrbJ0QLJTg_DLjcYyyK7fYoWRpz2r4s=s96-c"
+              displayName=""
+              avatarDisp={true}
+            />
+          )}
         </Paper>
         <TextInput activateJuan={setSent} />
       </Paper>
