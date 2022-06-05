@@ -4,6 +4,8 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import CancelIcon from '@mui/icons-material/Cancel';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { makeStyles } from '@mui/styles';
 import { divStyle } from '../constants/pagesStyles';
 import { fakeStatements } from '../data/fakeStatements';
@@ -75,7 +77,7 @@ const QuizPage: React.FunctionComponent = (): ReactElement => {
       <Grid container justifyContent="center" rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 4 }} m={4} gap={2}>
         <Grid
           item
-          xs={5}
+          md={5}
           onClick={(e) => validateStatement(true)}
           sx={{
             borderRadius: '2%',
@@ -117,8 +119,11 @@ const QuizPage: React.FunctionComponent = (): ReactElement => {
                 align="center"
                 sx={{ fontWeight: 600, fontSize: 20, color: isGoodAnswer ? 'lightseagreen' : 'red' }}
                 mb={2}
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
               >
-                Your answer is: {isGoodAnswer ? 'good' : 'wrong'}
+               Your answer is: {isGoodAnswer ? 'good' : 'wrong'} {isGoodAnswer ? <CheckCircleIcon sx={{ml: 1}} /> : <CancelIcon sx={{ml: 1}} />}
               </Typography>
               <Grid item container justifyContent="center">
                 <Button variant="contained" color="primary" onClick={onClick} sx={{ width: 200 }}>
