@@ -186,7 +186,7 @@ const FormPage: React.FunctionComponent = (): ReactElement => {
             <TextField
               helperText="Paste the link from a message"
               required
-              label="Massage:"
+              label="Message:"
               variant="filled"
               style={textFieldStyle}
               onChange={handleMessageChange}
