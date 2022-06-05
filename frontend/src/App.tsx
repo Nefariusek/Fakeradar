@@ -13,12 +13,13 @@ import {
 import EducationPage from './views/EducationPage';
 import FormPage from './views/FormPage';
 import HomePage from './views/HomePage';
+import QuizPage from './views/QuizPage';
 import Sponsorspage from './views/Sponsorspage';
 
 const paths = [
   { element: <Sponsorspage />, url: PATH_TO_SPONSORPAGE },
   { element: <FormPage />, url: PATH_TO_REPORTPAGE },
-  { element: <div>Quizpage</div>, url: PATH_TO_QUIZPAGE },
+  { element: <QuizPage />, url: PATH_TO_QUIZPAGE },
   { element: <EducationPage />, url: PATH_TO_EDUCATIONPAGE },
   { element: <HomePage />, url: PATH_TO_HOMEPAGE },
 ];
