@@ -5,13 +5,18 @@ import { CONFIRMATION_TEXT, LEAVE_HIM_ALONE, REPORT_TROLL } from '../constants/s
 import { Link } from 'react-router-dom';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 
-const FormConfirmation: React.FunctionComponent = (): ReactElement => {
+interface FormConfirmationProps {
+  resetForm: () => void;
+}
+
+const FormConfirmation = (props: FormConfirmationProps): ReactElement => {
+  const { resetForm } = props;
   const handleSubmitForm = (): void => {
     console.log('trolololo');
   };
 
   const handleResignation = (): void => {
-    console.log('leave Britney alone');
+    resetForm();
   };
 
   return (

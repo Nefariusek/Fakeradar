@@ -1,11 +1,13 @@
 import { Button, Checkbox, FormControlLabel, Grid, MenuItem, TextField, Typography } from '@mui/material';
-import React, { ReactElement, useState } from 'react';
+import axios from 'axios';
+import React, { ReactElement, useEffect, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 //@ts-ignore
 import FileUpload from 'react-mui-fileuploader';
 import FormConfirmation from '../components/FormConfirmation';
 import { divStyle } from '../constants/pagesStyles';
 import { TITLE } from '../constants/strings';
+import Chat from '../components/Chat';
 
 const sources = [
   {
@@ -35,6 +37,7 @@ const smallTextFieldStyle = {
 };
 
 const FormPage: React.FunctionComponent = (): ReactElement => {
+  const [chatShown, setChatShown] = useState(false);
   const [source, setSource] = useState(sources[0].value);
   const [message, setMessage] = useState('');
   const [details, setDetails] = useState('');
@@ -94,12 +97,23 @@ const FormPage: React.FunctionComponent = (): ReactElement => {
   };
 
   const handleValidation = () => {
-    console.log(details);
-    console.log(message);
     if (validateForm()) {
       console.log('sent');
       setIsClicked(!isClicked);
+      setChatShown(!chatShown);
     }
+  };
+
+  const resetForm = () => {
+    setSource(sources[0].value);
+    setMessage('');
+    setDetails('');
+    setDescription('');
+    setName('');
+    setContact('');
+    setIsChecked(false);
+    setVerified(false);
+    setIsClicked(false);
   };
 
   const handleFileUploadError = (error: any) => {
@@ -114,6 +128,22 @@ const FormPage: React.FunctionComponent = (): ReactElement => {
     console.log('Captcha clicked');
     setVerified(true);
   }
+
+  useEffect(() => {
+    axios
+      .get('https://login.salesforce.com/')
+      .then(function (response) {
+        // handle success
+        console.log(response);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
+  }, []);
 
   return (
     <div className="FormPage" style={divStyle}>
@@ -257,8 +287,17 @@ const FormPage: React.FunctionComponent = (): ReactElement => {
           </Grid>
         </>
       ) : (
-        <FormConfirmation />
+        <FormConfirmation resetForm={resetForm} />
       )}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '0',
+          right: '0',
+        }}
+      >
+        {chatShown && <Chat />}
+      </div>
     </div>
   );
 };
