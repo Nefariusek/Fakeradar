@@ -284,7 +284,7 @@ const FormPage: React.FunctionComponent = (): ReactElement => {
               </Button>
             ) : (
               <Grid item sx={{ minHeight: '90px' }}>
-                <ReCAPTCHA sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY} onChange={onReCaptchaChange} />
+                <ReCAPTCHA sitekey={'6LdiTUMgAAAAAPklRSvz6ofJn5HdOMLsWbHJlzJW'} onChange={onReCaptchaChange} />
               </Grid>
             )}
           </Grid>
