@@ -5,6 +5,7 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { makeStyles } from '@mui/styles';
+import { divStyle } from '../constants/pagesStyles';
 import { fakeStatements } from '../data/fakeStatements';
 import { trueStatements } from '../data/trueStatements';
 import { QUIZ_TITLE, QUIZ_SUBTITLE } from '../constants/strings';
@@ -61,7 +62,7 @@ const QuizPage: React.FunctionComponent = (): ReactElement => {
   };
 
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="lg" sx={divStyle}>
       <Box textAlign="center" color="primary.main">
         <Typography variant="h1" color="info.main" fontWeight="550">
           {QUIZ_TITLE}
@@ -117,11 +118,13 @@ const QuizPage: React.FunctionComponent = (): ReactElement => {
                 sx={{ fontWeight: 600, fontSize: 20, color: isGoodAnswer ? 'lightseagreen' : 'red' }}
                 mb={2}
               >
-                Your answer is: {isGoodAnswer ? 'good' : 'false'}
+                Your answer is: {isGoodAnswer ? 'good' : 'wrong'}
               </Typography>
-              <Button variant="contained" color="primary" onClick={onClick}>
-                Play again
-              </Button>
+              <Grid item container justifyContent="center">
+                <Button variant="contained" color="primary" onClick={onClick} sx={{ width: 200 }}>
+                  Play again
+                </Button>
+              </Grid>
             </>
           ) : null}
         </Grid>
