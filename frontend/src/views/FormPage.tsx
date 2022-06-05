@@ -100,7 +100,9 @@ const FormPage: React.FunctionComponent = (): ReactElement => {
     if (validateForm()) {
       console.log('sent');
       setIsClicked(!isClicked);
-      setChatShown(!chatShown);
+      if (verified) {
+        setChatShown(!chatShown);
+      }
     }
   };
 
@@ -127,6 +129,7 @@ const FormPage: React.FunctionComponent = (): ReactElement => {
   function onReCaptchaChange(recaptchaValue: string | null) {
     console.log('Captcha clicked');
     setVerified(true);
+    setChatShown(true);
   }
 
   useEffect(() => {
