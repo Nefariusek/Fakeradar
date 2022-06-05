@@ -27,10 +27,10 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
           <Typography variant="h1" color="info.main" fontWeight="550">
             {TITLE}
           </Typography>
-          <Typography variant="h5" marginTop="7%" color="primary.main">
+          <Typography variant="h5" marginTop="3%" color="primary.main">
             {QUOTE}
           </Typography>
-          <Typography variant="h5" marginTop="3%" marginBottom="20%" color="primary.main">
+          <Typography variant="h5" marginTop="1%" marginBottom="15%" color="primary.main">
             {QUOTE_AUTHOR}
           </Typography>
         </Box>
@@ -39,7 +39,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
           variant="contained"
           color="primary"
           aria-label="contained primary button group"
-          style={{ marginTop: '10%' }}
+          style={{ marginTop: '5%' }}
         >
           <Button component={Link} to={PATH_TO_EDUCATIONPAGE}>
             HOW TO AVOID
