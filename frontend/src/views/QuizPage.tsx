@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import { makeStyles } from '@mui/styles';
 import { fakeStatements } from '../data/fakeStatements';
 import { trueStatements } from '../data/trueStatements';
 import { QUIZ_TITLE, QUIZ_SUBTITLE } from '../constants/strings';
@@ -16,12 +17,21 @@ interface Statement {
   date: string;
 }
 
+const useStyles = makeStyles((theme) => ({
+  outerDiv: {
+    '&:hover': {
+      cursor: 'pointer',
+    },
+  },
+}));
+
 const QuizPage: React.FunctionComponent = (): ReactElement => {
   const [fakeStatement, setFakeStatement] = useState<Statement>();
   const [trueStatement, setTrueStatement] = useState<Statement>();
-  const [firstStatementAsTrue, setfirstStatementAsTrue] = useState(false);
+  const [firstStatementAsTrue, setfirstStatementAsTrue] = useState<Boolean>(false);
   const [isGoodAnswer, setIsGoodAnswer] = useState<Boolean>(false);
   const [showAnswer, setShowAnswer] = useState<Boolean>(false);
+  const classes = useStyles();
 
   useEffect(() => {
     const fakeStatementNumber = randomIntFromInterval(1, fakeStatements.length);
@@ -69,8 +79,9 @@ const QuizPage: React.FunctionComponent = (): ReactElement => {
           sx={{
             borderRadius: '2%',
             backgroundColor: showAnswer ? (firstStatementAsTrue ? 'chartreuse' : 'lightcoral') : '',
+            padding: 2,
           }}
-          p={2}
+          className={classes.outerDiv}
         >
           <Typography variant="h5" color="primary.main" m={2}>
             {firstStatementAsTrue ? trueStatement?.title : fakeStatement?.title}
@@ -86,8 +97,9 @@ const QuizPage: React.FunctionComponent = (): ReactElement => {
           sx={{
             borderRadius: '2%',
             backgroundColor: showAnswer ? (!firstStatementAsTrue ? 'chartreuse' : 'lightcoral') : '',
+            padding: 2,
           }}
-          p={2}
+          className={classes.outerDiv}
         >
           <Typography variant="h5" color="primary.main" m={2}>
             {firstStatementAsTrue ? fakeStatement?.title : trueStatement?.title}
