@@ -81,6 +81,7 @@ const QuizPage: React.FunctionComponent = (): ReactElement => {
           md={5}
           onClick={(e) => validateStatement(true)}
           sx={{
+            border: '1px solid black',
             borderRadius: '2%',
             backgroundColor: showAnswer ? (firstStatementAsTrue ? 'chartreuse' : 'lightcoral') : '',
             padding: 2,
@@ -100,6 +101,7 @@ const QuizPage: React.FunctionComponent = (): ReactElement => {
           md={5}
           onClick={(e) => validateStatement(false)}
           sx={{
+            border: '1px solid black',
             borderRadius: '2%',
             backgroundColor: showAnswer ? (!firstStatementAsTrue ? 'chartreuse' : 'lightcoral') : '',
             padding: 2,
