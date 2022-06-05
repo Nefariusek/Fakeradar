@@ -127,7 +127,8 @@ const QuizPage: React.FunctionComponent = (): ReactElement => {
                 alignItems="center"
                 justifyContent="center"
               >
-               Your answer is: {isGoodAnswer ? 'good' : 'wrong'} {isGoodAnswer ? <CheckCircleIcon sx={{ml: 1}} /> : <CancelIcon sx={{ml: 1}} />}
+                Your answer is: {isGoodAnswer ? 'good' : 'wrong. You got trolled!'}{' '}
+                {isGoodAnswer ? <CheckCircleIcon sx={{ ml: 1 }} /> : <CancelIcon sx={{ ml: 1 }} />}
               </Typography>
               <Grid item container justifyContent="center">
                 <Button variant="contained" color="primary" onClick={onClick} sx={{ width: 200 }}>

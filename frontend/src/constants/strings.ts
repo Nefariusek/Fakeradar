@@ -2,7 +2,7 @@ export const TITLE = 'FakeRADAR';
 export const QUOTE = '"Beware of false knowledge, it is more dangerous than ignorance"';
 export const QUOTE_AUTHOR = 'George Bernard Shaw';
 export const QUIZ_TITLE = 'True or fake Quiz';
-export const QUIZ_SUBTITLE = 'Choose (click) which statement is true?';
+export const QUIZ_SUBTITLE = 'Choose which statement is true?';
 export const SPONSORSPAGE_TITLE = 'Meet our sponsor:';
 
 const PHISHING1 = `1. Legit companies don’t request your sensitive information via email.  \nChances are if you receive an unsolicited email from an institution that provides a link or attachment and asks you to provide sensitive information, it’s a scam. Most companies will not send you an email asking for passwords, credit card information, credit scores, or tax numbers, nor will they send you a link from which you need to login.`;
