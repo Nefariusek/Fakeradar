@@ -1,10 +1,17 @@
 import React, { ReactElement } from 'react';
-import { Link } from 'react-router-dom';
-import { PATH_TO_EDUCATIONPAGE } from '../constants/paths';
 import { divStyle } from '../constants/pagesStyles';
 import { Box } from '@mui/system';
-import { QUOTE, QUOTE_AUTHOR, TITLE, PHISHING_ARRAY } from '../constants/strings';
+import { TITLE, PHISHING_ARRAY } from '../constants/strings';
 import { Typography, Grid, Card, CardContent } from '@mui/material';
+// import ReactPlayer from 'react-player';
+
+// const VideoPlayer = () => {
+//   return (
+//     <div style={{ marginLeft: 20 }}>
+//       <ReactPlayer url="https://www.youtube.com/watch?v=4o5hSxvN_-s" controls />
+//     </div>
+//   );
+// };
 
 const EductionPage: React.FunctionComponent = (): ReactElement => {
   const phishingExamples = PHISHING_ARRAY;
@@ -41,6 +48,7 @@ const EductionPage: React.FunctionComponent = (): ReactElement => {
           </Grid>
         ))}
       </Grid>
+      {/* <VideoPlayer /> */}
     </div>
   );
 };
