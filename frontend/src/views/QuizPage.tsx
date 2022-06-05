@@ -50,8 +50,6 @@ const QuizPage: React.FunctionComponent = (): ReactElement => {
     setShowAnswer(false);
   };
 
-  console.log('firstStatementAsTrue: ', firstStatementAsTrue);
-
   return (
     <Container maxWidth="md">
       <Box textAlign="center" color="primary.main">
@@ -63,8 +61,17 @@ const QuizPage: React.FunctionComponent = (): ReactElement => {
         </Typography>
       </Box>
 
-      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 4 }} m={4}>
-        <Grid item xs={6} onClick={(e) => validateStatement(true)}>
+      <Grid container justifyContent="center" rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 4 }} m={4} gap={2}>
+        <Grid
+          item
+          xs={5}
+          onClick={(e) => validateStatement(true)}
+          sx={{
+            borderRadius: '2%',
+            backgroundColor: showAnswer ? (firstStatementAsTrue ? 'chartreuse' : 'lightcoral') : '',
+          }}
+          p={2}
+        >
           <Typography variant="h5" color="primary.main" m={2}>
             {firstStatementAsTrue ? trueStatement?.title : fakeStatement?.title}
           </Typography>
@@ -72,7 +79,16 @@ const QuizPage: React.FunctionComponent = (): ReactElement => {
             {firstStatementAsTrue ? trueStatement?.text : fakeStatement?.text}
           </Typography>
         </Grid>
-        <Grid item xs={6} onClick={(e) => validateStatement(false)}>
+        <Grid
+          item
+          xs={5}
+          onClick={(e) => validateStatement(false)}
+          sx={{
+            borderRadius: '2%',
+            backgroundColor: showAnswer ? (!firstStatementAsTrue ? 'chartreuse' : 'lightcoral') : '',
+          }}
+          p={2}
+        >
           <Typography variant="h5" color="primary.main" m={2}>
             {firstStatementAsTrue ? fakeStatement?.title : trueStatement?.title}
           </Typography>
@@ -86,7 +102,8 @@ const QuizPage: React.FunctionComponent = (): ReactElement => {
               <Typography
                 component="p"
                 align="center"
-                sx={{ fontWeight: 600, color: isGoodAnswer ? 'lightseagreen' : 'red' }}
+                sx={{ fontWeight: 600, fontSize: 20, color: isGoodAnswer ? 'lightseagreen' : 'red' }}
+                mb={2}
               >
                 Your answer is: {isGoodAnswer ? 'good' : 'false'}
               </Typography>
